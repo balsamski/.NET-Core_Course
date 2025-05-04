@@ -1,5 +1,6 @@
 ﻿using EShop.Application.Service;
 using EShopDomain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -40,6 +41,7 @@ namespace EShopService.Controllers
 
         // POST api/<ProductController>
         [HttpPost]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult> Post([FromBody]Product product)
         {
             var result = await _productService.AddAsync(product);
@@ -49,6 +51,7 @@ namespace EShopService.Controllers
 
         // PUT api/<ProductController>/5
         [HttpPut("{id}")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult> Put(int id, [FromBody]Product product)
         {
             var result = await _productService.UpdateAsync(product);
@@ -58,6 +61,7 @@ namespace EShopService.Controllers
 
         // DELETE api/<ProductController>/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = "AdminOnly")]
         public async Task<ActionResult> Delete(int id)
         {
             var product = await _productService.GetAsync(id);
@@ -68,6 +72,7 @@ namespace EShopService.Controllers
         }
 
         [HttpPatch]
+        [Authorize(Policy = "AdminOnly")]
         public ActionResult Add([FromBody] Product product)
         {
             var result = _productService.Add(product);
