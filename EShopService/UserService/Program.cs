@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Security.Cryptography;
@@ -6,6 +7,7 @@ using User.Application.Services;
 using User.Domain.Models.JWT;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<EShop.Domain.Repositories.DbContext>(x => x.UseInMemoryDatabase("TestDb"), ServiceLifetime.Transient);
 
 // JWT config
 var jwtSettings = builder.Configuration.GetSection("Jwt");
