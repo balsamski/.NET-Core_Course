@@ -21,7 +21,7 @@ builder.Services.AddAuthentication(options =>
 .AddJwtBearer(options =>
 {
     var rsa = RSA.Create();
-    rsa.ImportFromPem(File.ReadAllText("../data/public.key"));
+    rsa.ImportFromPem(File.ReadAllText("/app/data/public.key"));
     var publicKey = new RsaSecurityKey(rsa);
 
     var jwtConfig = jwtSettings.Get<JwtSettings>();

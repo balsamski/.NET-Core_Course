@@ -3,6 +3,7 @@ services:
     image: ${DOCKER_REGISTRY-}eshopservice
     depends_on:
       - db
+      - userservice
     environment:
       - CONNECTION_STRING=Server=${DB_HOST};Database=${DB_NAME};User Id=${DB_USER};Password=${SA_PASSWORD};Encrypt=False;TrustServerCertificate=True;
     build:

@@ -76,7 +76,7 @@ namespace EShopService
             .AddJwtBearer(options =>
             {
                 var rsa = RSA.Create();
-                rsa.ImportFromPem(File.ReadAllText("../data/public.key"));
+                rsa.ImportFromPem(File.ReadAllText("/app/data/public.key"));
                 var publicKey = new RsaSecurityKey(rsa);
 
                 options.TokenValidationParameters = new TokenValidationParameters
@@ -123,8 +123,8 @@ namespace EShopService
 
             using (var scope = app.Services.CreateScope())
             {
-                var db = scope.ServiceProvider.GetRequiredService<DataContext>();
-                await db.Database.MigrateAsync();
+                //var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+                //await db.Database.MigrateAsync();
                 var seeder = scope.ServiceProvider.GetRequiredService<IEShopSeeder>();
                 await seeder.Seed();
             }
