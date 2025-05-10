@@ -17,7 +17,7 @@ namespace EShop.Application.Service
         {
             _repository = repository;
             _cache = cache;
-            var redis = ConnectionMultiplexer.Connect("localhost:6379");
+            var redis = ConnectionMultiplexer.Connect("redis:6379");
             _redisDb = redis.GetDatabase();
         }
 
