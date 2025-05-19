@@ -31,15 +31,18 @@ namespace EShop.Application.Service
         public async Task<Product> GetAsync(int id)
         {
             string key = $"Product:{id}";
-            var product = JsonSerializer.Deserialize<Product>(await _redisDb.StringGetAsync(key));
-
-            if (product == null)
+            string? productJson = await _redisDb.StringGetAsync(key);
+            if (string.IsNullOrEmpty(productJson))
             {
-                    product = await _repository.GetProductAsync(id);
-                    await _redisDb.StringSetAsync(key, JsonSerializer.Serialize(product), TimeSpan.FromDays(1));
+                var product = await _repository.GetProductAsync(id);
+                await _redisDb.StringSetAsync(key, JsonSerializer.Serialize(product), TimeSpan.FromDays(1));
+                return product;
             }
-
-            return product;
+            else
+            {
+                var product = JsonSerializer.Deserialize<Product?>(productJson);
+                return product;
+            }
         }
 
         public async Task<Product> UpdateAsync(Product product)

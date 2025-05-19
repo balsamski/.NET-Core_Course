@@ -123,8 +123,8 @@ namespace EShopService
 
             using (var scope = app.Services.CreateScope())
             {
-                //var db = scope.ServiceProvider.GetRequiredService<DataContext>();
-                //await db.Database.MigrateAsync();
+                var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+                await db.Database.MigrateAsync();
                 var seeder = scope.ServiceProvider.GetRequiredService<IEShopSeeder>();
                 await seeder.Seed();
             }
