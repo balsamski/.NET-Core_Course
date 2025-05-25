@@ -29,6 +29,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Domain", "User.Domain\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "User.Application", "User.Application\User.Application.csproj", "{13D9F981-2150-4862-BEC1-F45E8E827228}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{311B53AC-A0C9-477C-90C6-1B63BA30624C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService", "NotificationService\NotificationService.csproj", "{69D8CE4C-A962-45C3-921F-8CB49067D5A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +79,10 @@ Global
 		{13D9F981-2150-4862-BEC1-F45E8E827228}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13D9F981-2150-4862-BEC1-F45E8E827228}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13D9F981-2150-4862-BEC1-F45E8E827228}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69D8CE4C-A962-45C3-921F-8CB49067D5A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69D8CE4C-A962-45C3-921F-8CB49067D5A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69D8CE4C-A962-45C3-921F-8CB49067D5A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69D8CE4C-A962-45C3-921F-8CB49067D5A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +99,7 @@ Global
 		{4B2BF863-4E9A-4F87-9FC9-AF37D3F34573} = {2641E901-8C81-419E-BA64-EDCCA2193C44}
 		{88DBCC45-BC15-47C4-832A-1FC620103218} = {2641E901-8C81-419E-BA64-EDCCA2193C44}
 		{13D9F981-2150-4862-BEC1-F45E8E827228} = {2641E901-8C81-419E-BA64-EDCCA2193C44}
+		{69D8CE4C-A962-45C3-921F-8CB49067D5A5} = {311B53AC-A0C9-477C-90C6-1B63BA30624C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {233E5992-9E95-4D32-9DB9-747ADC5A4A0B}
