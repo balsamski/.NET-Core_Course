@@ -23,10 +23,10 @@ public class LoginNotificationEmail
                 "kafka:9092",
                 "after-login-email-topic",
                 ConsumerGroup = "function-consumer-group")]
-            string message)
+            KafkaMessage message)
     {
-        _logger.LogInformation($"Odebrano wiadomoœæ z Kafki: {message}");
-        await SendEmailAsync("W³asnie sie zalogowales", "balsamb@uek.krakow.pl");
+        _logger.LogInformation($"Odebrano wiadomoœæ z Kafki: {message.ToString()}");
+        await SendEmailAsync("W³asnie sie zalogowales", message.Value);
     }
         
     static async Task SendEmailAsync(string message, string toEmail)

@@ -28,3 +28,7 @@ services:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+
+  notificationserivce:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
