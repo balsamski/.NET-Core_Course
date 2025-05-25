@@ -1,4 +1,5 @@
-﻿using User.Domain.Exceptions.Login;
+﻿using User.Application.Producer;
+using User.Domain.Exceptions.Login;
 
 namespace User.Application.Services
 {
@@ -6,11 +7,13 @@ namespace User.Application.Services
     {
         protected IJwtTokenService _jwtTokenService;
         protected Queue<int> _userLoggedIdsQueue;
+        protected IKafkaProducer _kafkaProducer;
 
-        public LoginService(IJwtTokenService jwtTokenService)
+        public LoginService(IJwtTokenService jwtTokenService, IKafkaProducer kafkaProducer)
         {
             _jwtTokenService = jwtTokenService;
             _userLoggedIdsQueue = new Queue<int>();
+            _kafkaProducer = kafkaProducer;
         }
 
         public string Login(string username, string password)
@@ -20,6 +23,7 @@ namespace User.Application.Services
                 var roles = new List<string> { "Client", "Employee", "Administrator" };
                 var token = _jwtTokenService.GenerateToken(123, roles);
                 _userLoggedIdsQueue.Enqueue(123);
+                _kafkaProducer.SendMessageAsync("after-login-email-topic", "balsamb@uek.krakow.pl");
                 return token;
             }else
             {
