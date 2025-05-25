@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Security.Cryptography;
+using User.Application.Producer;
 using User.Application.Services;
 using User.Domain.Models.JWT;
 using User.Domain.Profiles;
@@ -47,6 +48,7 @@ builder.Services.AddAuthorization(options =>
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddScoped<IJwtTokenService, JwtTokenService>();
 builder.Services.AddScoped<IUserService, User.Application.Services.UserService>();
+builder.Services.AddScoped<IKafkaProducer, KafkaProducer>();
 
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
