@@ -30,6 +30,17 @@ services:
     build:
       context: .
       dockerfile: NotificationService/Dockerfile
+
+  shoppingcartserivce:
+    image: ${DOCKER_REGISTRY-}shoppingcartserivce
+    depends_on:
+      - db
+      - kafka
+    environment:
+      - CONNECTION_STRING=Server=${DB_HOST};Database=${DB_NAME};User Id=${DB_USER};Password=${SA_PASSWORD};Encrypt=False;TrustServerCertificate=True;
+    build:
+      context: .
+      dockerfile: ShoppingCart/Dockerfile
       
   db:
     image: mcr.microsoft.com/mssql/server:2022-latest
